@@ -19,7 +19,26 @@ connectDB();
 // MIDDLEWARE
 // ==========================================
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://data-vista-nine.vercel.app",
+    ],
+    methods: [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE",
+      "OPTIONS",
+    ],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
+  })
+);
+
 app.use(express.json());
 
 // ==========================================
@@ -47,13 +66,19 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/notes", notesRoutes);
 
 // Customer service request routes
-app.use("/api/service-requests", serviceRequestRoutes);
+app.use(
+  "/api/service-requests",
+  serviceRequestRoutes
+);
 
 // ==========================================
-// UPLOADS
+// LOCAL UPLOADS
 // ==========================================
 
-app.use("/uploads", express.static("uploads"));
+app.use(
+  "/uploads",
+  express.static("uploads")
+);
 
 // ==========================================
 // START SERVER
