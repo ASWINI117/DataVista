@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://datavista-backend-w0zt.onrender.com";
 
 function AdminDashboard() {
   const navigate = useNavigate();
